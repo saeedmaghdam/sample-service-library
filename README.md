@@ -198,3 +198,7 @@ Adding RabbitMQ to project, so developers can publish messages and also consume 
 Is used to add tracing to the project, it uses open telemetry and jaeger for tracing purpose.
 
 ### AddEventOutbox()
+Is used to add an event outbox to the services which the outgoing events would stored in it.
+
+### AddEventInbox()
+Is used to add an event inbox to the services which the incoming events would stored in it.
