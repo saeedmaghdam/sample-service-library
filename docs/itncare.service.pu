@@ -1,10 +1,10 @@
 @startuml
 
 partition Program.cs {
-    (*) --> AddITnCareService
+    (*) --> services.AddITnCareService
 
     partition Initialization {
-        AddITnCareService -> Load global settings from Consul
+        services.AddITnCareService -> Load global settings from Consul
         --> Load service settings from appsettings.json
         --> Create a new context for initialization purpose
         --> Configure options pattern
@@ -31,7 +31,7 @@ partition Program.cs {
         --> AddEventInboxHandler?
     }
 
-    AddITnCareService --> app.UseITnCareService
+    services.AddITnCareService --> app.UseITnCareService
 
     partition Bootstrap {
         app.UseITnCareService -> Deregister all instances
