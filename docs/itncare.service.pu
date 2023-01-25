@@ -1,0 +1,44 @@
+@startuml
+
+partition Program.cs {
+    (*) --> AddITnCareService
+
+    partition Initialization {
+        AddITnCareService -> Load global settings from Consul
+        --> Load service settings from appsettings.json
+        --> Create a new context for initialization purpose
+        --> Configure options pattern
+        --> AddITnCareWorkerService
+    }
+
+    partition AddingServices {
+        AddITnCareWorkerService --> AddServiceDiscovery?
+        --> AddServiceResolver?
+        --> AddCaching?
+        --> AddCentralizedConfiguration?
+        --> AddDebugToConsole?
+        --> AddHealthCheck?
+        --> AddLogging?
+        --> AddMetrics?
+        --> AddTracing?
+        --> AddRabbitMQ?
+        --> AddKafka?
+        --> AddHangFire?
+        --> AddMediatR?
+        --> AddEventOutbox?
+        --> AddEventOutboxHandler?
+        --> AddEventInbox?
+        --> AddEventInboxHandler?
+    }
+
+    AddITnCareService --> app.UseITnCareService
+
+    partition Bootstrap {
+        app.UseITnCareService -> Deregister all instances
+        --> Register new instance
+    }
+
+    app.UseITnCareService --> app.Run()
+}
+
+@enduml

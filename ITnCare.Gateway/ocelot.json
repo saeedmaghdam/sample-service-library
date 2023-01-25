@@ -1,0 +1,35 @@
+{
+  "Routes": [
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/home",
+      "DownstreamScheme": "http",
+      "ServiceName": "ITnCare.Commission",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "UpstreamPathTemplate": "/calculate-commission",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/verify",
+      "DownstreamScheme": "http",
+      "ServiceName": "ITnCare.OM.Incoming",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "UpstreamPathTemplate": "/commission/calculate",
+      "UpstreamHttpMethod": [ "POST" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:6500",
+    "ServiceDiscoveryProvider": {
+      "Scheme": "http",
+      "Host": "127.0.0.1",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

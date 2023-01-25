@@ -1,0 +1,29 @@
+{
+  "ConnectionStrings": {
+    "RedisConnectionString": "localhost",
+    "MongoDB": "mongodb://localhost:27017"
+  },
+  "ServiceDiscovery": {
+    "HealthCheck": {
+     "Interval": 120,
+     "Timeout": 60
+    }
+  },
+  "RabbitMQs":
+  {
+   	"Default": {
+    	"Host": "localhost",
+    	"Port": 5672,
+    	"Username": "logon",
+    	"Password": "logon" 
+    }
+  },
+  "Jaeger": {
+   "AgentHost": "localhost",
+   "AgentPort": 6831
+  },
+  "TracingEnabled": true,
+  "ServiceUrls": {
+    "ITnCare.Sample": "http://localhost:7281"
+  }
+}
